@@ -1,0 +1,26 @@
+replicaCount: 1
+
+image:
+  repository: aks0207/notejam
+  pullPolicy: IfNotPresent
+  tag: "v2"
+
+ports:
+  name: my-app
+  containerPort: 3000
+
+service:
+  type: NodePort
+  port: 80
+  protocol: TCP
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: 
+    ingressClassName: nginx
+  host: mynoteapp.helm
+  path: /
+  pathType: Prefix
+
+
